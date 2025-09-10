@@ -18,10 +18,9 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata.Root" });
 
   return {
-    metadataBase: new URL("https://www.kykeonanalytics.org"),
     title: {
       default: t("defaultTitle"),
-      template: `%s | Kykeon Analytics`,
+      template: `%s | ${t("defaultTitle")}`,
     },
     description: t("description"),
     icons: { icon: "/favicon.ico" },
@@ -46,25 +45,10 @@ export default function RootLayout({
 }>) {
   const messages = useMessages();
 
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Kykeon Analytics",
-    url: "https://www.kykeonanalytics.org/",
-    logo: "https://www.kykeonanalytics.org/logo.png",
-    description:
-      "A non-profit organization dedicated to advancing scientific and verifiable knowledge on the effects and science of psychoactive substances.",
-  };
-
   return (
     <html lang={locale}>
       {/* FONT: ideiglenesen kivéve a geist className-t */}
       <body className="flex min-h-screen flex-col font-sans">
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />

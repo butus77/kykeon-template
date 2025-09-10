@@ -18,12 +18,6 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { titleKey: "home", href: "/" },
   {
-    titleKey: "servicesShop",
-    href: "https://www.kykeonlabs.com/en-US",
-    isActive: true,
-    isExternal: true,
-  },
-  {
     titleKey: "more",
     href: "#",
     isDropdown: true,

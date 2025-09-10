@@ -4,45 +4,35 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-// Import all 10 chemical components
-import { ChemicalOne } from "./icons/ChemicalOne";
-import { ChemicalTwo } from "./icons/ChemicalTwo";
-import { ChemicalThree } from "./icons/ChemicalThree";
-import { ChemicalFour } from "./icons/ChemicalFour";
-import { ChemicalFive } from "./icons/ChemicalFive";
-import { ChemicalSix } from "./icons/ChemicalSix";
-import { ChemicalSeven } from "./icons/ChemicalSeven";
-import { ChemicalEight } from "./icons/ChemicalEight";
-import { ChemicalNine } from "./icons/ChemicalNine";
-import { ChemicalTen } from "./icons/ChemicalTen";
 
-const chemicalComponents = [
-  ChemicalOne,
-  ChemicalTwo,
-  ChemicalThree,
-  ChemicalFour,
-  ChemicalFive,
-  ChemicalSix,
-  ChemicalSeven,
-  ChemicalEight,
-  ChemicalNine,
-  ChemicalTen,
-];
+// A simple, generic shape for the animation
+const Circle = () => (
+  <div
+    style={{
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      backgroundColor: "rgba(128, 128, 128, 0.2)", // Use a specific, semi-transparent color
+    }}
+  />
+);
 
-const FallingChemical = () => {
+const animatedComponents = [Circle];
+
+const FallingItem = () => {
   const Component = React.useMemo(
     () =>
-      chemicalComponents[Math.floor(Math.random() * chemicalComponents.length)],
+      animatedComponents[Math.floor(Math.random() * animatedComponents.length)],
     [],
   );
 
   const initialX = React.useMemo(() => Math.random() * 100, []);
   const duration = React.useMemo(() => Math.random() * 15 + 20, []);
-  const size = React.useMemo(() => Math.random() * 40 + 20, []);
+  const size = React.useMemo(() => Math.random() * 30 + 10, []); // Smaller circles
 
   return (
     <motion.div
-      className="absolute -top-[10vh] text-foreground opacity-50"
+      className="absolute -top-[10vh] text-foreground"
       style={{
         left: `${initialX}vw`,
         width: size,
@@ -76,25 +66,20 @@ const FallingChemical = () => {
 };
 
 const AnimatedBackground = () => {
-  // State to track if the component has mounted on the client
   const [isMounted, setIsMounted] = useState(false);
 
-  // useEffect runs only on the client, after the initial render
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // If the component has not mounted yet, render nothing (null)
-  // This prevents the random values from being part of the server render
   if (!isMounted) {
     return null;
   }
 
-  // Once mounted, render the background on the client
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {Array.from({ length: 15 }).map((_, i) => (
-        <FallingChemical key={i} />
+        <FallingItem key={i} />
       ))}
     </div>
   );
