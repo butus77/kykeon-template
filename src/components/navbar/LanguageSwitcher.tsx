@@ -1,3 +1,4 @@
+// src/components/navbar/LanguageSwitcher.tsx
 "use client";
 
 import { useLocale } from "next-intl";
@@ -15,6 +16,7 @@ export default function LanguageSwitcher() {
 
   const switchLocale = (newLocale: string) => {
     router.push(pathname, { locale: newLocale });
+    setIsLangMenuOpen(false);
   };
 
   return (
@@ -23,15 +25,9 @@ export default function LanguageSwitcher() {
         onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
         className="nav-link nav-link-inactive"
       >
-        <FlagIcon
-          country={locale === "en" ? "GB" : "ES"}
-          className="mr-2 h-[24px] w-[30px]"
-        />
-        {locale.toUpperCase()}{" "}
-        <motion.div
-          animate={{ rotate: isLangMenuOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
+        <FlagIcon country={locale === "en" ? "GB" : "ES"} className="mr-2 h-[24px] w-[30px]" />
+        {locale.toUpperCase()}
+        <motion.div animate={{ rotate: isLangMenuOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown />
         </motion.div>
       </button>
@@ -43,20 +39,12 @@ export default function LanguageSwitcher() {
             exit={{ opacity: 0, y: -10 }}
             className="w-34 absolute right-0 mt-2 rounded-md border border-dropdown-border bg-dropdown-bg text-foreground shadow-lg"
           >
-            <button
-              className="dropdown-item flex w-full items-center"
-              onClick={() => switchLocale("en")}
-            >
-              <FlagIcon country="GB" className="mr-2 h-[22px] w-[33px]" />{" "}
-              English
+            <button className="dropdown-item flex w-full items-center" onClick={() => switchLocale("en")}>
+              <FlagIcon country="GB" className="mr-2 h-[22px] w-[33px]" /> English
             </button>
             <hr className="border-dropdown-separator" />
-            <button
-              className="dropdown-item flex w-full items-center"
-              onClick={() => switchLocale("es")}
-            >
-              <FlagIcon country="ES" className="mr-2 h-[22px] w-[33px]" />{" "}
-              Spanish
+            <button className="dropdown-item flex w-full items-center" onClick={() => switchLocale("es")}>
+              <FlagIcon country="ES" className="mr-2 h-[22px] w-[33px]" /> Spanish
             </button>
           </motion.div>
         )}
@@ -64,3 +52,4 @@ export default function LanguageSwitcher() {
     </div>
   );
 }
+
