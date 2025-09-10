@@ -19,18 +19,11 @@ export default function Footer() {
     <footer className="bg-background text-foreground">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
-          {/* Logo + Links */}
           <div className="flex flex-col items-center gap-6 md:items-start">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-              <Image
-                src="/favicon.ico"
-                alt="Project Logo"
-                width={32}
-                height={32}
-              />
+              <Image src="/favicon.ico" alt="Project Logo" width={32} height={32} />
               <span>Project Name</span>
             </Link>
-
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center md:justify-start">
               {footerLinks.map((link) => (
                 <Link
@@ -43,8 +36,6 @@ export default function Footer() {
               ))}
             </nav>
           </div>
-
-          {/* Social Icons */}
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <Link
@@ -58,8 +49,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
-        {/* Bottom bar */}
         <div className="mt-8 flex flex-col-reverse items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Copyright className="h-4 w-4" />
