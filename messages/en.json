@@ -1,82 +1,8 @@
 {
-  "Metadata": {
-    "Root": {
-      "defaultTitle": "Multilingual Next.js Template",
-      "description": "A template for creating multilingual websites with Next.js and next-intl."
-    }
-  },
   "Navbar": {
     "home": "Home",
-    "aboutUs": "About Us",
-    "faq": "FAQ",
     "more": "More",
-    "english": "English",
-    "spanish": "Spanish"
-  },
-  "HomePage": {
-    "metadata": {
-      "title": "Home Page",
-      "description": "This is the home page of the multilingual Next.js template."
-    },
-    "heroTitle": "Welcome to the Template",
-    "heroDescription": "This is a starting point for your new multilingual website. You can edit this text in the `messages/en.json` file.",
-    "resultsButton": "Learn More",
-    "warningsButton": "See FAQ"
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "About Us",
-      "description": "Information about the project or company."
-    },
-    "mainTitle": "About Us",
-    "mainSubtitle": "This page describes your project, team, and technology.",
-    "teamTitle": "Our Team",
-    "teamText": "Replace this with information about your team.",
-    "techTitle": "Our Technology",
-    "nmrTitle": "Placeholder Section 1",
-    "nmrText": "Description for the first placeholder section. You can customize this content.",
-    "nmrAlt": "Placeholder Image 1",
-    "lcmsTitle": "Placeholder Section 2",
-    "lcmsText": "Description for the second placeholder section.",
-    "lcmsAlt": "Placeholder Image 2",
-    "ftirTitle": "Placeholder Section 3",
-    "ftirText": "Description for the third placeholder section.",
-    "ftirAlt": "Placeholder Image 3",
-    "focusTitle": "Placeholder Section 4",
-    "focusText": "Description for the fourth placeholder section.",
-    "focusAlt": "Placeholder Image 4",
-    "serviceTitle": "Our Service",
-    "serviceText": "A brief, compelling summary of the primary service or value proposition."
-  },
-  "FaqPage": {
-    "metadata": {
-      "title": "FAQ",
-      "description": "Find answers to frequently asked questions."
-    },
-    "title": "Frequently Asked Questions",
-    "q1": {
-      "question": "What is this template for?",
-      "answer": "This is a template for creating multilingual websites with Next.js and next-intl."
-    },
-    "q2": {
-      "question": "How do I add a new language?",
-      "answer": "You can add a new language by creating a new JSON file in the `messages` directory and updating the `src/i18n/routing.ts` file."
-    },
-    "q3": {
-      "question": "Where can I find more information?",
-      "answer": "You can find more information in the documentation for Next.js and next-intl."
-    }
-  },
-  "CtaSection": {
-    "copy": "Copy",
-    "copied": "Copied!"
-  },
-  "DisclaimerSection": {
-    "title": "Disclaimer Title",
-    "p1": "This is a sample disclaimer. You should replace this with your own text.",
-    "p2": "This platform is for educational purposes only and is not a substitute for professional guidance.",
-    "p3": "We strongly discourage the misuse of this template and urge all users to exercise caution and discretion.",
-    "p4": "By accessing this platform, you agree that the creators will not be held liable for any actions or outcomes resulting from your use of the information provided herein.",
-    "p5": "Your entry signifies acceptance of these conditions."
+    "about": "About",
+    "faq": "FAQ"
   }
 }

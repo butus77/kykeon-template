@@ -1,82 +1,8 @@
 {
-  "Metadata": {
-    "Root": {
-      "defaultTitle": "Plantilla Next.js Multilingüe",
-      "description": "Una plantilla para crear sitios web multilingües con Next.js y next-intl."
-    }
-  },
   "Navbar": {
     "home": "Inicio",
-    "aboutUs": "Sobre Nosotros",
-    "faq": "Preguntas Frecuentes",
     "more": "Más",
-    "english": "Inglés",
-    "spanish": "Español"
-  },
-  "HomePage": {
-    "metadata": {
-      "title": "Página de Inicio",
-      "description": "Esta es la página de inicio de la plantilla Next.js multilingüe."
-    },
-    "heroTitle": "Bienvenido a la Plantilla",
-    "heroDescription": "Este es un punto de partida para tu nuevo sitio web multilingüe. Puedes editar este texto en el archivo `messages/es.json`.",
-    "resultsButton": "Saber Más",
-    "warningsButton": "Ver Preguntas Frecuentes"
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "Sobre Nosotros",
-      "description": "Información sobre el proyecto o la empresa."
-    },
-    "mainTitle": "Sobre Nosotros",
-    "mainSubtitle": "Esta página describe tu proyecto, equipo y tecnología.",
-    "teamTitle": "Nuestro Equipo",
-    "teamText": "Reemplaza esto con información sobre tu equipo.",
-    "techTitle": "Nuestra Tecnología",
-    "nmrTitle": "Sección de Ejemplo 1",
-    "nmrText": "Descripción para la primera sección de ejemplo. Puedes personalizar este contenido.",
-    "nmrAlt": "Imagen de Ejemplo 1",
-    "lcmsTitle": "Sección de Ejemplo 2",
-    "lcmsText": "Descripción para la segunda sección de ejemplo.",
-    "lcmsAlt": "Imagen de Ejemplo 2",
-    "ftirTitle": "Sección de Ejemplo 3",
-    "ftirText": "Descripción para la tercera sección de ejemplo.",
-    "ftirAlt": "Imagen de Ejemplo 3",
-    "focusTitle": "Sección de Ejemplo 4",
-    "focusText": "Descripción para la cuarta sección de ejemplo.",
-    "focusAlt": "Imagen de Ejemplo 4",
-    "serviceTitle": "Nuestro Servicio",
-    "serviceText": "Un resumen breve y convincente del servicio principal o la propuesta de valor."
-  },
-  "FaqPage": {
-    "metadata": {
-      "title": "Preguntas Frecuentes",
-      "description": "Encuentra respuestas a las preguntas más frecuentes."
-    },
-    "title": "Preguntas Frecuentes",
-    "q1": {
-      "question": "¿Para qué sirve esta plantilla?",
-      "answer": "Esta es una plantilla para crear sitios web multilingües con Next.js y next-intl."
-    },
-    "q2": {
-      "question": "¿Cómo agrego un nuevo idioma?",
-      "answer": "Puedes agregar un nuevo idioma creando un nuevo archivo JSON en el directorio `messages` y actualizando el archivo `src/i18n/routing.ts`."
-    },
-    "q3": {
-      "question": "¿Dónde puedo encontrar más información?",
-      "answer": "Puedes encontrar más información en la documentación de Next.js y next-intl."
-    }
-  },
-  "CtaSection": {
-    "copy": "Copiar",
-    "copied": "¡Copiado!"
-  },
-  "DisclaimerSection": {
-    "title": "Título del Descargo de Responsabilidad",
-    "p1": "Este es un descargo de responsabilidad de ejemplo. Debes reemplazarlo con tu propio texto.",
-    "p2": "Esta plataforma es solo para fines educativos y no sustituye el asesoramiento profesional.",
-    "p3": "Desaconsejamos firmemente el mal uso de esta plantilla e instamos a todos los usuarios a actuar con cautela y discreción.",
-    "p4": "Al acceder a esta plataforma, aceptas que los creadores no serán responsables de ninguna acción o resultado derivado del uso de la información aquí proporcionada.",
-    "p5": "Tu entrada significa la aceptación de estas condiciones."
+    "about": "Acerca de",
+    "faq": "Preguntas"
   }
 }
