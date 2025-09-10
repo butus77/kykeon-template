@@ -1,3 +1,4 @@
+// src/components/navbar/DesktopNavbar.tsx
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -14,7 +15,7 @@ const DesktopNavbar = () => {
   const t = useTranslations("Navbar");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openSubDropdown, setOpenSubDropdown] = useState<string | null>(null);
-  const navRef = useRef<HTMLDivElement>(null); // Create a ref for the nav container
+  const navRef = useRef<HTMLDivElement>(null);
 
   const handleDropdownToggle = (titleKey: string) => {
     setOpenDropdown(openDropdown === titleKey ? null : titleKey);
@@ -30,91 +31,18 @@ const DesktopNavbar = () => {
     setOpenSubDropdown(null);
   };
 
-  // Effect to handle clicks outside the navigation
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        handleLinkClick(); // Close dropdowns if click is outside
+        handleLinkClick();
       }
     };
+    if (openDropdown) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [openDropdown]);
 
-    // Add event listener only when a dropdown is open
-    if (openDropdown) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    // Cleanup function to remove the event listener
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [openDropdown]); // Rerun effect when openDropdown changes
-
-  const renderNavLinks = (links: NavLinkType[]) => {
-    return links.map((link) => {
-      if (link.isExternal) {
-        return (
-          <a
-            key={link.titleKey}
-            href={link.href as string}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "nav-link",
-              link.isActive ? "nav-link-active" : "nav-link-inactive",
-            )}
-          >
-            {t(link.titleKey)}
-          </a>
-        );
-      }
-      if (link.isDropdown) {
-        const isOpen = openDropdown === link.titleKey;
-        return (
-          <div key={link.titleKey} className="relative">
-            <button
-              onClick={() => handleDropdownToggle(link.titleKey)}
-              className="nav-link nav-link-inactive"
-            >
-              {t(link.titleKey)}{" "}
-              <motion.div
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronDown className="h-4 w-4" />
-              </motion.div>
-            </button>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute left-0 mt-2 w-48 rounded-md border border-dropdown-border bg-dropdown-bg shadow-lg"
-                >
-                  {link.sublinks && renderDropdownItems(link.sublinks)}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      }
-      return (
-        <Link
-          key={link.titleKey}
-          href={link.href}
-          className={cn(
-            "nav-link",
-            link.isActive ? "nav-link-active" : "nav-link-inactive",
-          )}
-        >
-          {t(link.titleKey)}
-        </Link>
-      );
-    });
-  };
-
-  const renderDropdownItems = (links: NavLinkType[]) => {
-    return links.map((link) => {
+  const renderDropdownItems = (links: NavLinkType[]) =>
+    links.map((link) => {
       if (link.isExternal) {
         return (
           <a
@@ -171,28 +99,73 @@ const DesktopNavbar = () => {
         </Link>
       );
     });
-  };
+
+  const renderNavLinks = (links: NavLinkType[]) =>
+    links.map((link) => {
+      if (link.isExternal) {
+        return (
+          <a
+            key={link.titleKey}
+            href={link.href as string}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn("nav-link", link.isActive ? "nav-link-active" : "nav-link-inactive")}
+          >
+            {t(link.titleKey)}
+          </a>
+        );
+      }
+      if (link.isDropdown) {
+        const isOpen = openDropdown === link.titleKey;
+        return (
+          <div key={link.titleKey} className="relative">
+            <button onClick={() => handleDropdownToggle(link.titleKey)} className="nav-link nav-link-inactive">
+              {t(link.titleKey)}
+              <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </motion.div>
+            </button>
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute left-0 mt-2 w-48 rounded-md border border-dropdown-border bg-dropdown-bg shadow-lg"
+                >
+                  {link.sublinks && renderDropdownItems(link.sublinks)}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      }
+      return (
+        <Link
+          key={link.titleKey}
+          href={link.href}
+          className={cn("nav-link", link.isActive ? "nav-link-active" : "nav-link-inactive")}
+        >
+          {t(link.titleKey)}
+        </Link>
+      );
+    });
 
   return (
     <div className="hidden w-full items-center justify-between md:flex">
-      {/* Left Section */}
+      {/* Left: Logo */}
       <div className="flex items-center">
         <Link href="/" className="ml-4">
-          <Image
-            src="/favicon.ico"
-            alt="Kykeon Analytics Logo"
-            width={58}
-            height={58}
-          />
+          <Image src="/favicon.ico" alt="Project Logo" width={58} height={58} />
         </Link>
       </div>
-      {/* Middle Navigation Links (Desktop) */}
+
+      {/* Middle: Links */}
       <div ref={navRef} className="flex items-center space-x-2">
-        {" "}
-        {/* Attach ref here */}
         {renderNavLinks(navLinks)}
       </div>
-      {/* Right Section (Desktop) */}
+
+      {/* Right: Language */}
       <div className="flex items-center">
         <LanguageSwitcher />
       </div>
@@ -201,3 +174,4 @@ const DesktopNavbar = () => {
 };
 
 export default DesktopNavbar;
+
