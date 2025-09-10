@@ -35,4 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-GEMINI.mdkeygugli.json
+GEMINI.md
+keygugli.json
