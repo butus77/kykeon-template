@@ -1,40 +1,32 @@
+// src/components/navbar/index.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion"; // Import framer-motion
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "../theme-toggle"; // ha nincs ilyen komponensed, ezt kommentezd ki
 
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // This effect is vanilla React/JS, no changes needed.
   useEffect(() => {
     let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
+      if (window.scrollY > lastScrollY && window.scrollY > 100) setHidden(true);
+      else setHidden(false);
       lastScrollY = window.scrollY;
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen((s) => !s);
 
   return (
     <nav
@@ -44,24 +36,20 @@ const Navbar = () => {
       )}
     >
       <div className="flex items-center justify-between">
-        {/* Desktop View (No changes needed here) */}
+        {/* Desktop */}
         <div className="hidden w-full md:flex">
           <DesktopNavbar />
         </div>
+
+        {/* Opcionális témaváltó */}
         <ThemeToggle />
 
-        {/* Mobile View (Refactored) */}
+        {/* Mobile */}
         <div className="flex w-full items-center justify-between md:hidden">
           <div className="flex items-center">
-            <Image
-              src="/favicon.ico"
-              alt="Kykeon Analytics Logo"
-              width={48}
-              height={48}
-            />
+            <Image src="/favicon.ico" alt="Project Logo" width={48} height={48} />
           </div>
           <div className="relative left-[20px] flex items-center">
-            {/* REPLACED: <Button> is now a plain <button> with Tailwind classes */}
             <button
               onClick={toggleMobileMenu}
               type="button"
@@ -77,7 +65,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Conditionally render MobileNavbar with animation */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -96,3 +84,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
