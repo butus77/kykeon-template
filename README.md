@@ -62,3 +62,7 @@ All text content is managed through the JSON files in the `messages` directory (
 The project uses Tailwind CSS for styling. You can customize the theme by editing the `tailwind.config.ts` file. Colors, fonts, and other design tokens can be modified there.
 
 The dark/light mode is handled by `next-themes` and the `ThemeProvider` component in `src/components/theme-provider.tsx`.
+## Minimal i18n starter
+- Copy `.env.example` to `.env.local` and set `SITE_URL` and `LOCALES` (e.g. en,es).
+- Run `npm install`, then `npm run dev`.
+- Messages live in `/messages`.

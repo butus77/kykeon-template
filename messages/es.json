@@ -1,8 +1,13 @@
 {
-  "Navbar": {
-    "home": "Inicio",
-    "more": "Más",
-    "about": "Acerca de",
-    "faq": "Preguntas"
+  "Navbar": { "home": "Inicio" },
+  "Metadata": {
+    "Root": {
+      "defaultTitle": "Project Name - Inicio",
+      "description": "Plantilla mínima multi-idioma para Next.js."
+    }
+  },
+  "HomePage": {
+    "heroTitle": "Bienvenido",
+    "heroDescription": "Tu starter multi-idioma está funcionando."
   }
 }

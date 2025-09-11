@@ -1,8 +1,13 @@
 {
-  "Navbar": {
-    "home": "Home",
-    "more": "More",
-    "about": "About",
-    "faq": "FAQ"
+  "Navbar": { "home": "Home" },
+  "Metadata": {
+    "Root": {
+      "defaultTitle": "Project Name - Starter",
+      "description": "A minimal multi-language Next.js starter."
+    }
+  },
+  "HomePage": {
+    "heroTitle": "Welcome",
+    "heroDescription": "Your multi-language starter is running."
   }
 }

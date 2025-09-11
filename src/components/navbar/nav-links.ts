@@ -14,14 +14,5 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { titleKey: "home", href: "/" },
-  {
-    titleKey: "more",
-    href: "#",
-    isDropdown: true,
-    sublinks: [
-      { titleKey: "about", href: "/about" },
-      { titleKey: "faq", href: "/faq" },
-    ],
-  },
+  { titleKey: "home", href: "/" }
 ];

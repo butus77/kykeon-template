@@ -1,25 +1,12 @@
-import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import FirstSection from "@/app/[locale]/(home)/components/FirstSection";
-import AnimatedBackground from "@/components/AnimatedBackground";
+// src/app/[locale]/(home)/page.tsx
+import { useTranslations } from "next-intl";
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "HomePage" });
-  return {
-    title: t("metadata.title"),
-    description: t("metadata.description"),
-  };
-}
-
-export default async function Home() {
+export default function HomePage() {
+  const t = useTranslations("HomePage");
   return (
-    <main>
-      <AnimatedBackground />
-      <FirstSection />
-    </main>
+    <section className="container mx-auto px-4 py-12">
+      <h1 className="mb-2 text-3xl font-bold">{t("heroTitle")}</h1>
+      <p className="text-muted-foreground">{t("heroDescription")}</p>
+    </section>
   );
 }

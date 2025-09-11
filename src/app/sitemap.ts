@@ -1,31 +1,46 @@
-import { MetadataRoute } from "next";
+// src/app/sitemap.ts
+import type { MetadataRoute } from "next";
+
+function getSiteUrl() {
+  const url = process.env.SITE_URL?.replace(/\/+$/, "");
+  return url || "http://localhost:3000";
+}
+
+function getLocales(): string[] {
+  const raw = process.env.LOCALES;
+  if (!raw) return ["en", "es"];
+  return raw.split(",").map((s) => s.trim()).filter(Boolean);
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const locales = ["en", "es"];
-  const baseUrl = "https://www.kykeonanalytics.org";
+  const baseUrl = getSiteUrl();
+  const locales = getLocales();
 
-  // Define your static page routes here (without locale)
-  const staticRoutes = [""];
+  // Ide veheted fel a statikus útvonalakat route-okként (locale nélkül)
+  const staticRoutes = [""]; // "" => a /<locale> gyökér
 
-  const sitemapEntries = staticRoutes.flatMap((route) => {
-    return locales.map((locale) => {
+  const entries: MetadataRoute.Sitemap = [];
+
+  for (const route of staticRoutes) {
+    for (const locale of locales) {
       const url = `${baseUrl}/${locale}${route}`;
-      return {
-        url: url,
+      const alternates: Record<string, string> = {};
+      for (const l of locales) {
+        alternates[l] = `${baseUrl}/${l}${route}`;
+      }
+      // x-default az első locale-ra mutasson
+      alternates["x-default"] = `${baseUrl}/${locales[0]}${route}`;
+
+      entries.push({
+        url,
         lastModified: new Date(),
-        alternates: {
-          languages: {
-            en: `${baseUrl}/en${route}`,
-            es: `${baseUrl}/es${route}`,
-            "x-default": `${baseUrl}/en${route}`,
-          },
-        },
-      };
-    });
-  });
+        alternates: { languages: alternates },
+      });
+    }
+  }
 
-  // Note: For dynamic routes like '/blog/[slug]', you will need to fetch all slugs
-  // and generate entries for them here in the future.
+  // Ha később lesznek dinamikus oldalak (pl. /blog/[slug]),
+  // itt gyűjtsd be a slugeket és push-olj új entries-t.
 
-  return sitemapEntries;
+  return entries;
 }

@@ -1,0 +1,24 @@
+{
+  "Navbar": {
+    "home": "Inicio",
+    "more": "Más",
+    "about": "Acerca de",
+    "faq": "Preguntas"
+  },
+  "Metadata": {
+    "Root": {
+      "defaultTitle": "Project Name - Inicio",
+      "description": "Plantilla mínima multi-idioma para Next.js."
+    }
+  },
+  "HomePage": {
+    "heroTitle": "Bienvenido",
+    "heroDescription": "Tu starter multi-idioma está funcionando.",
+    "resultsButton": "Ver resultados",
+    "warningsButton": "Leer advertencias",
+    "metadata": {
+      "title": "Inicio | Project Name",
+      "description": "Esta es la descripción de la página de inicio."
+    }
+  }
+}
