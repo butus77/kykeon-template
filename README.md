@@ -66,3 +66,6 @@ The dark/light mode is handled by `next-themes` and the `ThemeProvider` componen
 - Copy `.env.example` to `.env.local` and set `SITE_URL` and `LOCALES` (e.g. en,es).
 - Run `npm install`, then `npm run dev`.
 - Messages live in `/messages`.
+
+## SEO config
+Set SITE_URL in your .env.local (e.g. https://example.com) and LOCALES (e.g. en,es).
